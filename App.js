@@ -1,20 +1,65 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const RootStack = createStackNavigator();
+
+const Home = ({ navigation }) => {
+    const goToProfile = () => {
+        navigation.navigate('Profile');
+    };
+
+    return (
+        <View style={styles.container}>
+            <Text>HomeScreen</Text>
+            <StatusBar style="auto"/>
+            <Pressable onPress={goToProfile}>
+                <Text>
+                    go to profile screen
+                </Text>
+            </Pressable>
+        </View>
+    );
+};
+
+const Profile = ({ navigation }) => {
+    const goToHome = () => {
+        navigation.navigate('Home');
+    };
+
+    return (
+        <View style={styles.container}>
+            <Text>ProfileScreen</Text>
+            <StatusBar style="auto"/>
+            <Pressable onPress={goToHome}>
+                <Text>
+                    go to home screen
+                </Text>
+            </Pressable>
+        </View>
+    );
+};
+
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <NavigationContainer>
+            <RootStack.Navigator>
+                {/*<RootStack.Navigator screenOptions={{ headerShown: false }}>*/}
+                <RootStack.Screen name={'Home'} component={Home}/>
+                <RootStack.Screen name={'Profile'} component={Profile}/>
+            </RootStack.Navigator>
+
+        </NavigationContainer>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
