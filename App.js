@@ -45,13 +45,19 @@ const Profile = ({ navigation }) => {
 const Upload = () => {
 
     return (
-        <ImageUploader />
-    )
-}
+        <ImageUploader/>
+    );
+};
 
 export default function App() {
     return (
-        <NavigationContainer>
+        <NavigationContainer
+            linking={{
+                prefixes: [
+                    'http://localhost:19006',
+                    process.env.PUBLIC_URL,
+                ],
+            }}>
             <RootStack.Navigator>
                 {/*<RootStack.Navigator screenOptions={{ headerShown: false }}>*/}
                 <RootStack.Screen name={'Home'} component={Home}/>

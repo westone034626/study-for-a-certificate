@@ -1,5 +1,6 @@
 {
   "name": "studyforacertification",
+  "homepage": "https://westone034626.github.io/study-for-a-certificate",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
